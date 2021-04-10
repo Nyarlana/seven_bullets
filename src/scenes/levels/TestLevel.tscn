@@ -82,7 +82,7 @@ shape = SubResource( 3 )
 position = Vector2( 224, 224 )
 
 [node name="Button2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 94, 96 )
+position = Vector2( 96, 96 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 149, 381 )
