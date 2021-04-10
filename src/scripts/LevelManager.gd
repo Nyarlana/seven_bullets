@@ -5,7 +5,13 @@ var current_level := -1
 signal level_loaded
 
 func load_next_level(at : Node) -> void :
-	var levelscn := load(levels[current_level+1])
-	var level = levelscn.instance()
+	load_level(at, current_level+1)
+	current_level+=1
+	return
+
+func load_level(at : Node, lvl : int) -> void :
+	var levelscn := load(levels[lvl])
+	var level : Level = levelscn.instance()
 	at.add_child(level)
-	emit_signal("level_loaded")
+	emit_signal("level_loaded", level)
+	return
