@@ -10,3 +10,6 @@ func level_win() -> void :
 
 func deload() -> void :
 	queue_free()
+
+func _get_Player_Spawn() -> Vector2 :
+	return Vector2.ZERO
