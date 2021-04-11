@@ -9,6 +9,7 @@ export var jump_velocity := 500
 export var speed := 300
 var bullets := 7
 var velocity := Vector2()
+onready var anim := $AnimationPlayer
 
 export (Array, PackedScene) var gun_classes: Array
 var curren_gun = 0
@@ -40,6 +41,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = speed
 	else:
 		velocity.x = 0
+	if velocity.length() >= 0 and anim.current_animation != "run":
+		anim.play("run")
+	elif anim.current_animation != "idle":
+		anim.play("idle")
 	
 
 func kill() -> void:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/character16-Sheet.png-74770d78a44f90cfcceda291280fa74f.stex"
+path="res://.import/gun.png-a6013e00e94a6d28ba7f5705f115013c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/character16-Sheet.png"
-dest_files=[ "res://.import/character16-Sheet.png-74770d78a44f90cfcceda291280fa74f.stex" ]
+source_file="res://data/gun.png"
+dest_files=[ "res://.import/gun.png-a6013e00e94a6d28ba7f5705f115013c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
