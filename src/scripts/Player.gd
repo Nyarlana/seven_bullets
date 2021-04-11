@@ -10,21 +10,22 @@ export var speed := 300
 var bullets := 7
 var velocity := Vector2()
 
-export (PackedScene) var gun_class
-onready var gun: Gun = gun_class.instance()
+export (Array, PackedScene) var gun_classes: Array
+var curren_gun = 0
+var gun: Gun = null
 
 signal shoot(bullet_source, ammo, pos, rot) #same as bullet but ammo is ammo left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	gun.connect("shot", self, "_on_shot")
-	add_child(gun)
+	change_gun(0)
 
 func jump():
 	velocity.y -= jump_velocity
 	
-#func _process(delta: float) -> void:
-#	pass
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("switch_gun"):
+		change_gun((curren_gun + 1) % gun_classes.size())
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
@@ -66,6 +67,15 @@ func reset() -> void:
 	bullets = 7
 	velocity = Vector2.ZERO
 	enable()
+	
+func change_gun(gun_number: int) -> void:
+	if gun != null:
+		remove_child(gun)
+		gun.queue_free()
+	gun = gun_classes[gun_number].instance()
+	gun.connect("shot", self, "_on_shot")
+	add_child(gun)
+	curren_gun = gun_number
 
 func _on_shot(bullet, ac, pos, dir) -> void:
 	if bullets >0 :
