@@ -35,11 +35,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("player_jump") and is_on_floor():
 		jump()
 	
-	if Input.is_action_pressed("player_left"):
+	if Input.is_action_pressed("player_left") and is_on_floor():
 		velocity.x = -speed
-	elif Input.is_action_pressed("player_right"):
+	elif Input.is_action_pressed("player_right") and is_on_floor():
 		velocity.x = speed
-	else:
+	elif is_on_floor():
 		velocity.x = 0
 	if velocity.length() >= 0 and anim.current_animation != "run":
 		anim.play("run")
@@ -85,4 +85,7 @@ func change_gun(gun_number: int) -> void:
 func _on_shot(shot_data: GunShot) -> void:
 	if bullets >= shot_data.ammo_cost :
 		bullets -= shot_data.ammo_cost
+		var knockback = Vector2(shot_data.knockback, 0).rotated(shot_data.direction)
+		velocity -= knockback
+		print(knockback, velocity)
 		emit_signal("shoot", shot_data)

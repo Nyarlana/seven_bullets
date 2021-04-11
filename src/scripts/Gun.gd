@@ -5,6 +5,7 @@ class_name Gun
 export var ammo_cost := 1
 export var bullet_spawn_path: NodePath
 export var bullet : PackedScene
+export var knockback: float = 0
 
 onready var bullet_spawn: Node2D = get_node(bullet_spawn_path)
 
@@ -29,6 +30,7 @@ func signal_shoot() -> void:
 	shot.ammo_cost = ammo_cost
 	shot.position = bullet_spawn.global_position
 	shot.direction = rotation
+	shot.knockback = knockback
 	emit_signal("shot", shot)
 #	var new_bullet: Node2D = bullet.instance()
 #	new_bullet.position = get_node(bullet_spawn).position
