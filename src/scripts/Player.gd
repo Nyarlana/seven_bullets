@@ -42,11 +42,11 @@ func kill() -> void:
 	emit_signal("dead")
 
 func disable() -> void:
-	set_physics_process(false)
-	set_process(false)
 	pause_mode = PAUSE_MODE_STOP
 	for child in get_children() :
 		child.set_process_unhandled_input(false)
+	set_physics_process(false)
+	set_process(false)
 	hide()
 
 func enable() -> void:
@@ -57,7 +57,11 @@ func enable() -> void:
 		child.set_process_unhandled_input(true)
 	show()
 
-
+func reset() -> void:
+	disable()
+	bullets = 7
+	velocity = Vector2.ZERO
+	enable()
 
 func _on_ShurikenLauncher_shot(bullet, ac, pos, dir) -> void:
 	if bullets >0 :
