@@ -52,3 +52,9 @@ func enable() -> void:
 	set_process(true)
 	pause_mode = PAUSE_MODE_INHERIT
 	show()
+
+
+
+func _on_ShurikenLauncher_shot(bullet, ac, pos, dir) -> void:
+	emit_signal("shoot", bullet, ac, pos, dir)
+	print("player shot")
