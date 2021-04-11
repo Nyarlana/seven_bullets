@@ -14,9 +14,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Bullet.rotate(rotation_speed * delta)
+	$BulletCollision.rotate(rotation_speed * delta)
 	position += velocity
 
 
-func _on_Bullet_area_entered(area: Area2D) -> void:
+func destroy(_ignored):
 	hide()
 	queue_free()

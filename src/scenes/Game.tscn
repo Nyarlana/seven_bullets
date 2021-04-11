@@ -11,3 +11,4 @@ script = ExtResource( 1 )
 
 [node name="GUI" parent="." instance=ExtResource( 3 )]
 [connection signal="ammo_consumed" from="." to="GUI" method="display_bullets"]
+[connection signal="shoot" from="Player" to="." method="gun_shot"]
