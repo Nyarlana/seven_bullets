@@ -5,6 +5,7 @@ onready var player := $Player
 onready var gui := $GUI
 
 signal ammo_consumed(ammo)
+signal reset
 
 func _ready() -> void :
 	LevelManager.connect("level_loaded", self, "on_Level_Loaded")
@@ -16,6 +17,7 @@ func _unhandled_input(event):
 		reset()
 
 func reset() -> void:
+	emit_signal("reset")
 	curr_level.queue_free()
 	LevelManager.load_level(self, LevelManager.current_level)
 	player.reset()
