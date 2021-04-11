@@ -10,11 +10,15 @@ export var speed := 300
 var bullets := 7
 var velocity := Vector2()
 
+export (PackedScene) var gun_class
+onready var gun: Gun = gun_class.instance()
+
 signal shoot(bullet_source, ammo, pos, rot) #same as bullet but ammo is ammo left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	gun.connect("shot", self, "_on_shot")
+	add_child(gun)
 
 func jump():
 	velocity.y -= jump_velocity
@@ -58,9 +62,7 @@ func enable() -> void:
 	show()
 
 
-
-func _on_ShurikenLauncher_shot(bullet, ac, pos, dir) -> void:
+func _on_shot(bullet, ac, pos, dir) -> void:
 	if bullets >0 :
 		bullets-=ac
 		emit_signal("shoot", bullet, bullets, pos, dir)
-#	print("player shot")
