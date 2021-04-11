@@ -3,10 +3,12 @@ extends Node2D
 class_name Gun
 
 export var ammo_cost := 1
-export var bullet_spawn: NodePath
+export var bullet_spawn_path: NodePath
 export var bullet : PackedScene
 
-signal shot(bullet, ac, pos, dir) # bullet : bullet packedscene, ac : ammo cost, dir : direction
+onready var bullet_spawn: Node2D = get_node(bullet_spawn_path)
+
+signal shot(shot_data) # bullet : bullet packedscene, ac : ammo cost, dir : direction
 
 func _ready() -> void:
 	position = Vector2.ZERO
@@ -22,8 +24,12 @@ func _shoot() -> void:
 	signal_shoot()
 
 func signal_shoot() -> void:
-	var spawn: Node2D = get_node(bullet_spawn)
-	emit_signal("shot", bullet,  ammo_cost, spawn.global_position, rotation)
+	var shot = GunShot.new()
+	shot.bullet = bullet
+	shot.ammo_cost = ammo_cost
+	shot.position = bullet_spawn.global_position
+	shot.direction = rotation
+	emit_signal("shot", shot)
 #	var new_bullet: Node2D = bullet.instance()
 #	new_bullet.position = get_node(bullet_spawn).position
 #	new_bullet.rotation = rotation

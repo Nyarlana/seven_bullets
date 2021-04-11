@@ -19,13 +19,14 @@ func reset() -> void:
 	curr_level.queue_free()
 	LevelManager.load_level(self, LevelManager.current_level)
 	player.reset()
+	emit_signal("ammo_consumed", player.bullets)
 
-func gun_shot(bullet_source : PackedScene, ammo_left : int, pos : Vector2, rotation : float) :
-	var bullet : Node2D = bullet_source.instance()
-	bullet.position = pos
-	bullet.rotation = rotation
+func gun_shot(shot_data: GunShot):
+	var bullet : Node2D = shot_data.bullet.instance()
+	bullet.position = shot_data.position
+	bullet.rotation = shot_data.direction
 	add_child(bullet)
-	emit_signal("ammo_consumed", ammo_left)
+	emit_signal("ammo_consumed", player.bullets)
 
 func on_Level_Loaded(level : Level) -> void :
 	level.connect("level_win", self, "on_Level_Win")

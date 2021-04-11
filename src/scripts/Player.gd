@@ -14,7 +14,7 @@ export (Array, PackedScene) var gun_classes: Array
 var curren_gun = 0
 var gun: Gun = null
 
-signal shoot(bullet_source, ammo, pos, rot) #same as bullet but ammo is ammo left
+signal shoot(shot_data) #same as bullet but ammo is ammo left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -77,7 +77,7 @@ func change_gun(gun_number: int) -> void:
 	add_child(gun)
 	curren_gun = gun_number
 
-func _on_shot(bullet, ac, pos, dir) -> void:
-	if bullets >0 :
-		bullets-=ac
-		emit_signal("shoot", bullet, bullets, pos, dir)
+func _on_shot(shot_data: GunShot) -> void:
+	if bullets >= shot_data.ammo_cost :
+		bullets -= shot_data.ammo_cost
+		emit_signal("shoot", shot_data)

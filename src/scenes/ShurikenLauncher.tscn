@@ -6,7 +6,7 @@
 
 [node name="ShurikenLauncher" type="Node2D"]
 script = ExtResource( 1 )
-bullet_spawn = NodePath("Position2D")
+bullet_spawn_path = NodePath("Position2D")
 bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
