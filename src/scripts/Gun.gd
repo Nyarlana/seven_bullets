@@ -11,7 +11,7 @@ signal shot(bullet, ac, pos, dir) # bullet : bullet packedscene, ac : ammo cost,
 func _ready() -> void:
 	position = Vector2.ZERO
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event) -> void:
 	if event.is_action_pressed("player_shoot") :
 		_shoot()
 

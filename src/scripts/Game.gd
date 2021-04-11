@@ -11,6 +11,10 @@ func _ready() -> void :
 	if LevelManager.current_level < 0 :
 		LevelManager.load_next_level(self)
 
+func _unhandled_input(event):
+	if event.is_action_pressed("reset") :
+		reset()
+
 func reset() -> void:
 	LevelManager.load_level(self, LevelManager.current_level)
 

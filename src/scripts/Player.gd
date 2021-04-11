@@ -38,23 +38,29 @@ func _physics_process(delta: float) -> void:
 	
 
 func kill() -> void:
-	emit_signal("dead")
 	disable()
+	emit_signal("dead")
 
 func disable() -> void:
 	set_physics_process(false)
 	set_process(false)
 	pause_mode = PAUSE_MODE_STOP
+	for child in get_children() :
+		child.set_process_unhandled_input(false)
 	hide()
 
 func enable() -> void:
 	set_physics_process(true)
 	set_process(true)
 	pause_mode = PAUSE_MODE_INHERIT
+	for child in get_children() :
+		child.set_process_unhandled_input(true)
 	show()
 
 
 
 func _on_ShurikenLauncher_shot(bullet, ac, pos, dir) -> void:
-	emit_signal("shoot", bullet, ac, pos, dir)
-	print("player shot")
+	if bullets >0 :
+		bullets-=ac
+		emit_signal("shoot", bullet, bullets, pos, dir)
+#	print("player shot")
