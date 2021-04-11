@@ -14,4 +14,6 @@ gun_classes = [ ExtResource( 4 ), ExtResource( 5 ) ]
 
 [node name="GUI" parent="." instance=ExtResource( 3 )]
 [connection signal="ammo_consumed" from="." to="GUI" method="display_bullets"]
+[connection signal="reset" from="." to="GUI" method="reset"]
+[connection signal="reset" from="." to="Player" method="reset"]
 [connection signal="shoot" from="Player" to="." method="gun_shot"]
