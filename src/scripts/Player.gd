@@ -7,7 +7,10 @@ extends KinematicBody2D
 export var gravity := 1000
 export var jump_velocity := 500
 export var speed := 300
+var bullets := 7
 var velocity := Vector2()
+
+signal shoot(bullet_source, ammo, pos, rot) #same as bullet but ammo is ammo left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
