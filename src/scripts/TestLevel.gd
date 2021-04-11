@@ -10,3 +10,7 @@ func _on_Button_button_hit() -> void:
 	counter -= 1
 	if counter < 1 :
 		level_win()
+
+
+func _on_Lava_body_entered(body: Node) -> void:
+	body.kill()

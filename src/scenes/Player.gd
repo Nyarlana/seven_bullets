@@ -33,3 +33,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0
 	
+
+func kill() -> void:
+	emit_signal("dead")
+	disable()
+
+func disable() -> void:
+	set_physics_process(false)
+	set_process(false)
+	pause_mode = PAUSE_MODE_STOP
+	hide()
+
+func enable() -> void:
+	set_physics_process(true)
+	set_process(true)
+	pause_mode = PAUSE_MODE_INHERIT
+	show()

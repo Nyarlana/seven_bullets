@@ -13,5 +13,6 @@ func load_level(at : Node, lvl : int) -> void :
 	var levelscn := load(levels[lvl])
 	var level : Level = levelscn.instance()
 	at.add_child(level)
+	at.move_child(level, 0)
 	emit_signal("level_loaded", level)
 	return
