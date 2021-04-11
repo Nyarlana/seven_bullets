@@ -85,7 +85,7 @@ func reset() -> void:
 	bullets = 7
 	velocity = Vector2.ZERO
 	enable()
-	
+
 func change_gun(gun_number: int) -> void:
 	if gun != null:
 		remove_child(gun)
