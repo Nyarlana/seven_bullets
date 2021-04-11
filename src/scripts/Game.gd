@@ -16,7 +16,9 @@ func _unhandled_input(event):
 		reset()
 
 func reset() -> void:
+	curr_level.queue_free()
 	LevelManager.load_level(self, LevelManager.current_level)
+	player.reset()
 
 func gun_shot(bullet_source : PackedScene, ammo_left : int, pos : Vector2, rotation : float) :
 	var bullet : Node2D = bullet_source.instance()
