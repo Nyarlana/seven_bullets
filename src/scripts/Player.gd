@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch_gun"):
 		change_gun((curren_gun + 1) % gun_classes.size())
 
+
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -47,11 +48,17 @@ func _physics_process(delta: float) -> void:
 			$Sprite.flip_h = false
 	elif is_on_floor():
 		velocity.x = 0
-	if velocity.length() >= 0 and anim.current_animation != "run":
-		anim.play("run")
-	elif anim.current_animation != "idle":
-		anim.play("idle")
 	
+	if (velocity.x > 5 or velocity.x < -5) and anim.current_animation != "run" :
+		anim.play("run")
+	if velocity.y < -10 :
+		anim.stop()
+		$Sprite.frame = 4
+	elif velocity.y > 10 :
+		anim.stop()
+		$Sprite.frame = 5
+	elif (velocity.x < 5 and velocity.x > -5) and anim.current_animation != "idle" :
+		anim.play("idle")
 
 func kill() -> void:
 	disable()
