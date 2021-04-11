@@ -15,6 +15,8 @@ export (Array, PackedScene) var gun_classes: Array
 var curren_gun = 0
 var gun: Gun = null
 
+var is_flipped := false
+
 signal shoot(shot_data) #same as bullet but ammo is ammo left
 
 # Called when the node enters the scene tree for the first time.
@@ -37,8 +39,12 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("player_left") and is_on_floor():
 		velocity.x = -speed
+		if !$Sprite.flip_h:
+			$Sprite.flip_h = true
 	elif Input.is_action_pressed("player_right") and is_on_floor():
 		velocity.x = speed
+		if $Sprite.flip_h:
+			$Sprite.flip_h = false
 	elif is_on_floor():
 		velocity.x = 0
 	if velocity.length() >= 0 and anim.current_animation != "run":

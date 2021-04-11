@@ -11,11 +11,11 @@ bullet = ExtResource( 3 )
 knockback = 300.0
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 40, 0 )
+position = Vector2( 35, 0 )
 scale = Vector2( 60, 40 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 20, 0 )
-scale = Vector2( 60, 40 )
+scale = Vector2( 30, 20 )
 texture = ExtResource( 2 )
 hframes = 6
