@@ -3,8 +3,8 @@
 [ext_resource path="res://src/scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/GUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/scenes/Shotgun.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/scenes/ShurikenLauncher.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scenes/guns/Cannon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scenes/guns/ShurikenLauncher.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )

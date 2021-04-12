@@ -9,9 +9,8 @@ var velocity := Vector2(speed, 0)
 func _ready() -> void:
 	gravity = 800
 	velocity = velocity.rotated(rotation)
-	yield(get_tree().create_timer(lifetime), "timeout")
-	destroy()
-
+	$Timer.connect("timeout", self, "destroy")
+	$Timer.start(lifetime)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
