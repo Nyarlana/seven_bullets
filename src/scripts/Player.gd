@@ -18,6 +18,7 @@ var gun: Gun = null
 var is_flipped := false
 
 signal shoot(shot_data) #same as bullet but ammo is ammo left
+signal dead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
