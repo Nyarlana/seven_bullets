@@ -8,7 +8,7 @@
 script = ExtResource( 2 )
 bullet_spawn_path = NodePath("Position2D")
 bullet = ExtResource( 3 )
-knockback = 250.0
+knockback = 100.0
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 35, 0 )

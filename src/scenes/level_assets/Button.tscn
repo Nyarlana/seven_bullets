@@ -4,7 +4,7 @@
 [ext_resource path="res://src/scripts/Button.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 16, 16 )
 
 [node name="Button" type="Area2D"]
 collision_layer = 2
@@ -15,16 +15,16 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 64, 64 )
+scale = Vector2( 32, 32 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 3, 0, 1, 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 20.7655
-margin_top = -29.7452
-margin_right = 60.7655
-margin_bottom = -15.7452
+margin_left = 6.27641
+margin_top = -15.2561
+margin_right = 46.2764
+margin_bottom = -1.25611
 text = "1"
 __meta__ = {
 "_edit_use_anchors_": false

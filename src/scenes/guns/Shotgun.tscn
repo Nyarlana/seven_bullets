@@ -16,7 +16,7 @@ script = ExtResource( 2 )
 ammo_cost = 2
 bullet_spawn_path = NodePath("Position2D")
 bullet = ExtResource( 1 )
-knockback = 300.0
+knockback = 150.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 15.8512, 0 )
