@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/scripts/ShotgunSpread.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/guns/bullets/Shuriken.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="ShotgunSpread" type="Area2D"]
+script = ExtResource( 1 )
+shell = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Node"]
+position = Vector2( 6.0061, -9.17441 )
+rotation = -1.01578
+
+[node name="Position2D2" type="Position2D" parent="Node"]
+position = Vector2( 10.375, -8.375 )
+rotation = -0.616101
+
+[node name="Position2D3" type="Position2D" parent="Node"]
+position = Vector2( 14, -4 )
+rotation = -0.253073
+
+[node name="Position2D4" type="Position2D" parent="Node"]
+position = Vector2( 14, 2.5 )
+rotation = 0.127409
+scale = Vector2( 1, 1 )
+
+[node name="Position2D5" type="Position2D" parent="Node"]
+position = Vector2( 10.375, 6.125 )
+rotation = 0.507891
+
+[node name="Position2D6" type="Position2D" parent="Node"]
+position = Vector2( 6.0061, 8.45807 )
+rotation = 1.01578

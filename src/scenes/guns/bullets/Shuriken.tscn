@@ -3,7 +3,7 @@
 [ext_resource path="res://src/scripts/Shuriken.gd" type="Script" id=1]
 
 [node name="Bullet" type="Area2D"]
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.15, 0.15 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
@@ -13,5 +13,3 @@ polygon = PoolVector2Array( 64, -64, 24, 0, 64, 64, 0, 24, -64, 64, -24, 0, -64,
 
 [node name="Bullet" type="Polygon2D" parent="."]
 polygon = PoolVector2Array( 64, 64, 24, 0, 64, -64, 0, -24, -64, -64, -24, 0, -64, 64, 0, 24 )
-[connection signal="area_entered" from="." to="." method="destroy"]
-[connection signal="body_entered" from="." to="." method="destroy"]

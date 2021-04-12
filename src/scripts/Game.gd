@@ -27,6 +27,8 @@ func gun_shot(shot_data: GunShot):
 	var bullet : Node2D = shot_data.bullet.instance()
 	bullet.position = shot_data.position
 	bullet.rotation = shot_data.direction
+	if bullet is Cluster :
+		bullet.connect("spawn", self, "gun_shot")
 	add_child(bullet)
 	emit_signal("ammo_consumed", player.bullets)
 

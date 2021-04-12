@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/scenes/guns/bullets/ShotgunShell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scripts/Gun.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.210938, 0.210938, 0.210938, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 1
+
+[node name="Shotgun" type="Node2D"]
+script = ExtResource( 2 )
+ammo_cost = 2
+bullet_spawn_path = NodePath("Position2D")
+bullet = ExtResource( 1 )
+knockback = 300.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 15.8512, 0 )
+scale = Vector2( 24.6584, 13.9797 )
+texture = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 28.1804, 0 )

@@ -5,7 +5,7 @@ class_name Gun
 export var ammo_cost := 1
 export var bullet_spawn_path: NodePath
 export var bullet : PackedScene
-export var knockback: float = 0
+export var knockback := 0.0
 
 onready var bullet_spawn: Node2D = get_node(bullet_spawn_path)
 

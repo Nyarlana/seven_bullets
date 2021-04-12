@@ -31,10 +31,13 @@ position = Vector2( 224, 224 )
 
 [node name="Button2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 96, 96 )
-clicks = 6
+clicks = 5
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 149, 381 )
+
+[node name="Button3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, 480 )
 [connection signal="body_entered" from="Lava" to="." method="_on_Lava_body_entered"]
 [connection signal="button_hit" from="Button" to="." method="_on_Button_button_hit"]
 [connection signal="button_hit" from="Button2" to="." method="_on_Button_button_hit"]
