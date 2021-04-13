@@ -2,6 +2,7 @@ extends Node2D
 
 class_name Level
 
+signal open
 signal level_win
 signal level_lost
 

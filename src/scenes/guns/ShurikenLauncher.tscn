@@ -10,18 +10,18 @@ bullet_spawn_path = NodePath("Position2D")
 bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 9.75876, 0 )
-scale = Vector2( 4, 4 )
+position = Vector2( 7.08908, 0 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 23.7588, -3.88914 )
+position = Vector2( 14.0888, -1.01103 )
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 1.0
 default_color = Color( 1, 0, 0, 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 23.7588, -3.88914 )
+position = Vector2( 14.0888, -1.01103 )
 enabled = true
 cast_to = Vector2( 1000, 0 )
