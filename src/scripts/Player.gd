@@ -66,11 +66,11 @@ func kill() -> void:
 	emit_signal("dead")
 
 func disable() -> void:
-	pause_mode = PAUSE_MODE_STOP
 	for child in get_children() :
 		child.set_process_unhandled_input(false)
 	set_physics_process(false)
 	set_process(false)
+	pause_mode = PAUSE_MODE_STOP
 	hide()
 
 func enable() -> void:

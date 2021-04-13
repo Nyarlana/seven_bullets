@@ -14,3 +14,5 @@ func _on_Button_button_hit(clicks : int) -> void:
 
 func _on_Lava_body_entered(body: Node) -> void:
 	body.kill()
+	body.position = _get_Player_Spawn()
+	#emit_signal("level_lost")

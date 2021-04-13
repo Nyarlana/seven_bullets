@@ -10,4 +10,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$Bullet.rotate(rotation_speed * delta)
 	$BulletCollision.rotate(rotation_speed * delta)
-	position += velocity
+	position += velocity*(speed*delta)

@@ -20,6 +20,7 @@ func reset() -> void:
 	emit_signal("reset")
 	curr_level.queue_free()
 	LevelManager.load_level(self, LevelManager.current_level)
+	yield(LevelManager, "level_loaded")
 	player.reset()
 	emit_signal("ammo_consumed", player.bullets)
 
@@ -34,6 +35,7 @@ func gun_shot(shot_data: GunShot):
 
 func on_Level_Loaded(level : Level) -> void :
 	level.connect("level_win", self, "on_Level_Win")
+	level.connect("level_lost", self, "reset")
 	curr_level = level
 	player.position = level._get_Player_Spawn()
 	player.enable()
