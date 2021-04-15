@@ -10,5 +10,5 @@ func _process(delta) -> void:
 		global_position += (target - global_position) * delta 
 
 func trigger() :
-	$StaticBody2D/CollisionShape2D.disabled = true
+	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	set_process(true)

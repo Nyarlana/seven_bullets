@@ -1,6 +1,6 @@
 extends Node
 
-var levels := ["res://src/scenes/levels/TestLevel.tscn"]
+var levels := ["res://src/scenes/levels/TestLevel.tscn", "res://src/scenes/levels/endGame.tscn"]
 var current_level := -1
 signal level_loaded
 

@@ -7,6 +7,9 @@ extends KinematicBody2D
 export var gravity := 1000
 export var jump_velocity := 500
 export var speed := 300
+
+export var air_speed := 2.5
+
 var bullets := 7
 var velocity := Vector2()
 onready var anim := $AnimationPlayer
@@ -39,16 +42,24 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("player_jump") and is_on_floor():
 		jump()
 	
-	if Input.is_action_pressed("player_left") and is_on_floor():
-		velocity.x = -speed
+	if Input.is_action_pressed("player_left"):
+		if is_on_floor() :
+			velocity.x = -speed
+		else :
+			velocity.x -= air_speed
 		if !$Sprite.flip_h:
 			$Sprite.flip_h = true
-	elif Input.is_action_pressed("player_right") and is_on_floor():
-		velocity.x = speed
+	elif Input.is_action_pressed("player_right"):
+		if is_on_floor() :
+			velocity.x = speed
+		else :
+			velocity.x += air_speed
 		if $Sprite.flip_h:
 			$Sprite.flip_h = false
 	elif is_on_floor():
 		velocity.x = 0
+	
+	clamp(velocity.x, -300, 300)
 	
 	if (velocity.x > 5 or velocity.x < -5) and anim.current_animation != "run" :
 		anim.play("run")
