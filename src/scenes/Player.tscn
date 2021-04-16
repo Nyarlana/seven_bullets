@@ -39,11 +39,13 @@ tracks/0/keys = {
 "values": [ 2, 3 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_layer = 8
 script = ExtResource( 1 )
 gravity = 500
-jump_velocity = 250
+jump_velocity = 265
 speed = 150
 
 [node name="Sprite" type="Sprite" parent="."]

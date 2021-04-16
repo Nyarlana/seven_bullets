@@ -15,7 +15,7 @@ var velocity := Vector2()
 onready var anim := $AnimationPlayer
 
 export (Array, PackedScene) var gun_classes: Array
-var curren_gun = 0
+var curren_gun := 0
 var gun: Gun = null
 
 var is_flipped := false
@@ -25,22 +25,22 @@ signal dead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	change_gun(0)
+	if gun_classes.size() > 0 :
+		change_gun(0)
 
 func jump():
 	velocity.y -= jump_velocity
 	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("switch_gun"):
-		change_gun((curren_gun + 1) % gun_classes.size())
 
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if Input.is_action_just_pressed("switch_gun") and gun_classes.size() > 0 :
+		change_gun((curren_gun + 1) % gun_classes.size())
+	if event.is_action("player_jump") and is_on_floor() :
+		jump()
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
-	
-	if Input.is_action_pressed("player_jump") and is_on_floor():
-		jump()
 	
 	if Input.is_action_pressed("player_left"):
 		if is_on_floor() :
@@ -106,6 +106,20 @@ func change_gun(gun_number: int) -> void:
 	gun.connect("shot", self, "_on_shot")
 	add_child(gun)
 	curren_gun = gun_number
+
+func add_gun(new_gun : PackedScene) -> void:
+	gun_classes.append(new_gun)
+	change_gun(gun_classes.size()-1)
+
+func remove_gun(fgun : PackedScene) -> void:
+	gun_classes.remove(gun_classes.rfind(fgun))
+	if gun_classes.size() > 0 :
+		change_gun(0)
+	elif gun != null:
+		remove_child(gun)
+		gun.queue_free()
+		gun = null
+		curren_gun = 0
 
 func _on_shot(shot_data: GunShot) -> void:
 	if bullets >= shot_data.ammo_cost :

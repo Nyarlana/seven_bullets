@@ -18,7 +18,7 @@ func _unhandled_input(event):
 
 func reset() -> void:
 	emit_signal("reset")
-	curr_level.queue_free()
+	curr_level.deload()
 	LevelManager.load_level(self, LevelManager.current_level)
 	yield(LevelManager, "level_loaded")
 	player.reset()
@@ -36,9 +36,12 @@ func gun_shot(shot_data: GunShot):
 func on_Level_Loaded(level : Level) -> void :
 	level.connect("level_win", self, "on_Level_Win")
 	level.connect("level_lost", self, "reset")
+	level.connect("ungun", player, "remove_gun")
 	curr_level = level
 	player.position = level._get_Player_Spawn()
 	player.enable()
 
 func on_Level_Win() -> void :
+	curr_level.queue_free()
+	player.reset()
 	LevelManager.load_next_level(self)
