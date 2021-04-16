@@ -2,6 +2,11 @@ extends Level
 
 
 var counter := 7
+onready var gunpop : PackedScene = $SHPickup.gun
+
+func deload() -> void:
+	emit_signal("ungun", gunpop)
+	queue_free()
 
 func _get_Player_Spawn() -> Vector2 :
 	return $Position2D.position

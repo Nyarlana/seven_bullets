@@ -25,7 +25,7 @@ func reset() -> void:
 	LevelManager.load_level(self, LevelManager.current_level)
 	yield(LevelManager, "level_loaded")
 	player.reset()
-	emit_signal("ammo_consumed", player.bullets)
+	emit_signal("ammo_consumed", 7)
 
 func gun_shot(shot_data: GunShot):
 	var bullet : Node2D = shot_data.bullet.instance()
@@ -51,4 +51,5 @@ func on_Level_Win() -> void :
 	yield(anim, "animation_finished")
 	curr_level.queue_free()
 	player.reset()
+	emit_signal("ammo_consumed", 7)
 	LevelManager.load_next_level(self)
