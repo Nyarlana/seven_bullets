@@ -7,6 +7,9 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+// shader taken from https://godotshaders.com/shader/diamond-based-screen-transition/
+// original author is @DDRKirbyISQ
+
 // Ranges from 0 to 1 over the course of the transition.
 // We use this to actually animate the shader.
 uniform float progress : hint_range(0, 1);

@@ -3,6 +3,7 @@ extends Node
 var curr_level : Node
 onready var player := $Player
 onready var gui := $GUI
+onready var anim := $Transitions/AnimationPlayer
 
 signal ammo_consumed(ammo)
 signal reset
@@ -17,7 +18,8 @@ func _unhandled_input(event):
 		reset()
 
 func reset() -> void:
-	$Transitions/AnimationPlayer.play("FadeDiamonds")
+	anim.play("FadeDiamonds")
+	yield(anim, "animation_finished")
 	emit_signal("reset")
 	curr_level.deload()
 	LevelManager.load_level(self, LevelManager.current_level)
@@ -39,12 +41,14 @@ func on_Level_Loaded(level : Level) -> void :
 	level.connect("level_lost", self, "reset")
 	level.connect("ungun", player, "remove_gun")
 	curr_level = level
-	$Transitions/AnimationPlayer.play_backwards("FadeDiamonds")
+	anim.play_backwards("FadeDiamonds")
 	player.position = level._get_Player_Spawn()
+	yield(anim, "animation_finished")
 	player.enable()
 
 func on_Level_Win() -> void :
-	$Transitions/AnimationPlayer.play("FadeDiamonds")
+	anim.play("FadeDiamonds")
+	yield(anim, "animation_finished")
 	curr_level.queue_free()
 	player.reset()
 	LevelManager.load_next_level(self)
