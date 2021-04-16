@@ -112,5 +112,5 @@ func _on_shot(shot_data: GunShot) -> void:
 		bullets -= shot_data.ammo_cost
 		var knockback = Vector2(shot_data.knockback, 0).rotated(shot_data.direction)
 		velocity -= knockback
-		print(knockback, velocity)
+		#print(knockback, velocity)
 		emit_signal("shoot", shot_data)

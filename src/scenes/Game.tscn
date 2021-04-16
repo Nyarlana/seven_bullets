@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/GUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/scenes/guns/Cannon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/scenes/guns/ShurikenLauncher.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/guns/Shotgun.tscn" type="PackedScene" id=6]
 
@@ -11,7 +10,7 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-gun_classes = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+gun_classes = [ ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="GUI" parent="." instance=ExtResource( 3 )]
 [connection signal="ammo_consumed" from="." to="GUI" method="display_bullets"]
