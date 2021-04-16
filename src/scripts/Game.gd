@@ -18,7 +18,7 @@ func _unhandled_input(event):
 		reset()
 
 func reset() -> void:
-	anim.play("FadeDiamonds")
+	anim.play("FadeDiamonds", -1, 2.0)
 	yield(anim, "animation_finished")
 	emit_signal("reset")
 	curr_level.deload()
