@@ -32,7 +32,7 @@ func jump():
 	velocity.y -= jump_velocity
 	
 
-func _unhandled_key_input(event: InputEventKey) -> void:
+func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch_gun") and gun_classes.size() > 0 :
 		change_gun((curren_gun + 1) % gun_classes.size())
 	if event.is_action("player_jump") and is_on_floor() :
@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	elif is_on_floor():
 		velocity.x = 0
 	
+# warning-ignore:return_value_discarded
 	clamp(velocity.x, -300, 300)
 	
 	if (velocity.x > 5 or velocity.x < -5) and anim.current_animation != "run" :
@@ -103,6 +104,7 @@ func change_gun(gun_number: int) -> void:
 		remove_child(gun)
 		gun.queue_free()
 	gun = gun_classes[gun_number].instance()
+# warning-ignore:return_value_discarded
 	gun.connect("shot", self, "_on_shot")
 	add_child(gun)
 	curren_gun = gun_number
