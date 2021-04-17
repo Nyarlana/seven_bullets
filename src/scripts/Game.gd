@@ -9,6 +9,7 @@ signal ammo_consumed(ammo)
 signal reset
 
 func _ready() -> void :
+	gui.reset()
 	LevelManager.connect("level_loaded", self, "on_Level_Loaded")
 	if LevelManager.current_level < 0 :
 		LevelManager.load_next_level(self)

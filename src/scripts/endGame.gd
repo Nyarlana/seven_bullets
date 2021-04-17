@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Level
 
 func _ready() -> void:
-	get_parent().get_parent().player.disable()
+	get_tree().change_scene("res://src/scenes/EndScreen.tscn")
