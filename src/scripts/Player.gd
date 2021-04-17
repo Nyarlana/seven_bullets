@@ -112,7 +112,11 @@ func add_gun(new_gun : PackedScene) -> void:
 	change_gun(gun_classes.size()-1)
 
 func remove_gun(fgun : PackedScene) -> void:
-	gun_classes.remove(gun_classes.rfind(fgun))
+	var tpos := gun_classes.rfind(fgun)
+	if tpos < 0 :
+		print("not found")
+		return
+	gun_classes.remove(tpos)
 	if gun_classes.size() > 0 :
 		change_gun(0)
 	elif gun != null:
