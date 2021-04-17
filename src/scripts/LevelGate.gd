@@ -9,7 +9,7 @@ func _ready() -> void:
 func trigger() -> void:
 	get_node("Area2D/CollisionShape2D").set_deferred("disabled", false)
 	#$Sprite.texture.gradient.colors[0] = Color(255.0, 255.0, 0.0)
-	$AnimationPlayer.play("OpenGate")
+	$AnimationPlayer.play("OpenGate", -1, 1.5)
 
 func _on_Area2D_area_entered(area):
 	emit_signal("level_won")

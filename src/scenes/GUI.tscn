@@ -3,21 +3,10 @@
 [ext_resource path="res://src/scripts/GUI.gd" type="Script" id=1]
 [ext_resource path="res://data/BulletsBG.png" type="Texture" id=2]
 [ext_resource path="res://data/Bullets.png" type="Texture" id=3]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-void fragment() {
-	vec4 color = texture(TEXTURE, UV);
-	if (color.a > 0.0) {
-		COLOR = vec4(1.0,1.0,1.0,1.0);
-	} else {
-		COLOR = color;
-	}
-}"
+[ext_resource path="res://src/shaders/White.shader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+shader = ExtResource( 4 )
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
