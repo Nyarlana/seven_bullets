@@ -9,6 +9,7 @@ signal ammo_consumed(ammo)
 signal reset
 
 func _ready() -> void :
+	player.connect("dead", self, "_on_player_death")
 	gui.reset()
 	LevelManager.connect("level_loaded", self, "on_Level_Loaded")
 	if LevelManager.current_level < 0 :
@@ -44,7 +45,6 @@ func on_Level_Loaded(level : Level) -> void :
 	curr_level = level
 	anim.play_backwards("FadeDiamonds")
 	player.position = level._get_Player_Spawn()
-	player.connect("dead", self, "_on_player_death")
 	yield(anim, "animation_finished")
 	player.enable()
 

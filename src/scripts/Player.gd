@@ -60,7 +60,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 	
 # warning-ignore:return_value_discarded
-	clamp(velocity.x, -300, 300)
+	#clamp(velocity.x, -300, 300)
+	if velocity.x < -300 or velocity.x > 300 :
+		velocity.x *= 0.9
 	
 	if (velocity.x > 5 or velocity.x < -5) and anim.current_animation != "run" :
 		anim.play("run")
