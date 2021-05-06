@@ -25,3 +25,15 @@ texture = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 28.1804, 0 )
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 28.321, -10.1706 )
+points = PoolVector2Array( 19.9773, -17.2527, 74.8539, -65.3288 )
+width = 0.5
+default_color = Color( 0, 1, 0.392157, 1 )
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2( 28.0551, 8.90992 )
+points = PoolVector2Array( 19.8223, 18.2466, 66.5598, 61.2095 )
+width = 0.5
+default_color = Color( 0, 1, 0.392157, 1 )

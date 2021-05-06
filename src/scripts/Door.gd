@@ -1,14 +1,15 @@
 extends Node2D
 
-export var target := Vector2.ZERO
+var shader = preload("res://src/shaders/Dissolve.shader")
 
 func _ready() -> void:
-	set_process(false)
-
-func _process(delta) -> void:
-	if (global_position - target).length() >= 5:
-		global_position += (target - global_position) * delta 
+	#$Sprite.get_material().set_shader_param("dissolve_value", 1.0)
+	pass
 
 func trigger() :
 	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
-	set_process(true)
+	#self.hide()
+	$Tween.interpolate_property(self, "scale", self.scale, Vector2(self.scale.x, 0.0), 0.1)
+	$Tween.start()
+	yield($Tween, "tween_completed")
+	queue_free()

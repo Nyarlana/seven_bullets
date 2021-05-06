@@ -44,6 +44,7 @@ func on_Level_Loaded(level : Level) -> void :
 	curr_level = level
 	anim.play_backwards("FadeDiamonds")
 	player.position = level._get_Player_Spawn()
+	player.connect("dead", self, "_on_player_death")
 	yield(anim, "animation_finished")
 	player.enable()
 
@@ -54,3 +55,6 @@ func on_Level_Win() -> void :
 	player.reset()
 	emit_signal("ammo_consumed", 7)
 	LevelManager.load_next_level(self)
+
+func _on_player_death() -> void :
+	reset()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://data/LavaTilemap32.tres" type="TileSet" id=1]
 [ext_resource path="res://src/scripts/TestLevel.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://data/LevelTilemap32.tres" type="TileSet" id=4]
 [ext_resource path="res://src/scenes/level_assets/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/level_assets/LevelGate.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/scenes/level_assets/ShottyPickup.tscn" type="PackedScene" id=7]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource( 2 )
@@ -52,13 +51,10 @@ position = Vector2( 120, 424 )
 [node name="Door" parent="." instance=ExtResource( 5 )]
 position = Vector2( 784, 368 )
 scale = Vector2( 1, 5 )
-target = Vector2( 784, 240 )
 
 [node name="LevelGate" parent="." instance=ExtResource( 6 )]
 position = Vector2( 832, 288 )
 
-[node name="SHPickup" parent="." instance=ExtResource( 7 )]
-position = Vector2( 224, 448 )
 [connection signal="body_entered" from="Lava" to="." method="_on_Lava_body_entered"]
 [connection signal="button_hit" from="Button" to="." method="_on_Button_button_hit"]
 [connection signal="button_end" from="Button2" to="." method="_on_Button2_button_end"]

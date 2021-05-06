@@ -15,3 +15,8 @@ func deload() -> void :
 
 func _get_Player_Spawn() -> Vector2 :
 	return Vector2.ZERO
+
+func _on_Lava_body_entered(body: Node) -> void:
+	body.kill()
+	body.position = _get_Player_Spawn()
+	#emit_signal("level_lost")
