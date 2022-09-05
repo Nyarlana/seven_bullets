@@ -39,9 +39,7 @@ tracks/0/keys = {
 "values": [ 2, 3 ]
 }
 
-[node name="Player" type="KinematicBody2D" groups=[
-"player",
-]]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_layer = 8
 script = ExtResource( 1 )
 gravity = 500
@@ -52,7 +50,6 @@ speed = 150
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 hframes = 6
-frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2.97754 )
